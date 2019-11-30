@@ -1,10 +1,11 @@
-let express = require('express');
-let app = express();
+const express = require('express');
+const app = express();
 
-let todos = [];
+const todos = [];
+const workList = [];
 
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static('public'))
+app.use(express.static('public'));
 
 app.set('view engine', 'ejs');
 
@@ -19,6 +20,15 @@ app.get('/', (req, res) => {
 app.post('/', (req, res) => {
   todos.push(req.body.newItem);
   res.redirect('/');
+});
+
+app.get('/work', (req, res) => {
+  res.render('list', { listTitle: 'Work List', todos: workList });
+});
+
+app.post('/work', (req, res) => {
+  workList.push(req.body.newItem);
+  res.redirect('/work');
 });
 
 app.listen(4000, () => console.log('Example app listening on port 4000!'));

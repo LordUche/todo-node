@@ -1,33 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
+<%- include('header') %>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="css/styles.css">
-  <title>Todo List</title>
-</head>
+<div class="box" id="heading">
+  <h1><%= listTitle %></h1>
+</div>
 
-<body>
-  <div class="box" id="heading">
-    <h1><%= listTitle %></h1>
-  </div>
+<div class="box">
+  <% todos.forEach(todo => { %>
+  <label class="item">
+    <input type="checkbox" name="items">
+    <p><%= todo %></p>
+  </label>
+  <% }) %>
 
-  <div class="box">
-    <% todos.forEach(todo => { %>
-    <label class="item">
-      <input type="checkbox" name="items">
-      <p><%= todo %></p>
-    </label>
-    <% }) %>
+  <form method="POST">
+    <input type="text" name="newItem" placeholder="New Item" autocomplete="off" autofocus>
+    <button type="submit">+</button>
+  </form>
+</div>
 
-    <form action="/" method="POST">
-      <input type="text" name="newItem" placeholder="New Item" autocomplete="off" autofocus>
-      <button type="submit">+</button>
-    </form>
-  </div>
-
-</body>
-
-</html>
+<%- include('footer') %>
