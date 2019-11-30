@@ -4,6 +4,7 @@ let app = express();
 let todos = [];
 
 app.use(express.urlencoded({ extended: true }));
+app.use(express.static('public'))
 
 app.set('view engine', 'ejs');
 
@@ -12,7 +13,7 @@ app.get('/', (req, res) => {
   const options = { weekday: 'long', day: 'numeric', month: 'long' };
   const day = today.toLocaleDateString('en-GB', options);
 
-  res.render('list', { day, todos });
+  res.render('list', { listTitle: day, todos });
 });
 
 app.post('/', (req, res) => {

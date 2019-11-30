@@ -5,22 +5,29 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="css/styles.css">
   <title>Todo List</title>
 </head>
 
 <body>
-  <form action="/" method="POST">
-    <input type="text" name="newItem">
-    <button type="submit">Add</button>
-  </form>
+  <div class="box" id="heading">
+    <h1><%= listTitle %></h1>
+  </div>
 
-  <h1><%= day %></h1>
-
-  <ul>
+  <div class="box">
     <% todos.forEach(todo => { %>
-      <li><%= todo %></li>
+    <label class="item">
+      <input type="checkbox" name="items">
+      <p><%= todo %></p>
+    </label>
     <% }) %>
-  </ul>
+
+    <form action="/" method="POST">
+      <input type="text" name="newItem" placeholder="New Item" autocomplete="off" autofocus>
+      <button type="submit">+</button>
+    </form>
+  </div>
+
 </body>
 
 </html>
