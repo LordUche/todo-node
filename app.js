@@ -1,4 +1,5 @@
 const express = require('express');
+const date = require(__dirname + '/date');
 const app = express();
 
 const todos = [];
@@ -10,11 +11,7 @@ app.use(express.static('public'));
 app.set('view engine', 'ejs');
 
 app.get('/', (req, res) => {
-  const today = new Date();
-  const options = { weekday: 'long', day: 'numeric', month: 'long' };
-  const day = today.toLocaleDateString('en-GB', options);
-
-  res.render('list', { listTitle: day, todos });
+  res.render('list', { listTitle: date.getDate(), todos });
 });
 
 app.post('/', (req, res) => {
