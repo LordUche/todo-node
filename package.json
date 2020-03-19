@@ -12,9 +12,13 @@
   "license": "ISC",
   "dependencies": {
     "ejs": "^3.0.1",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "lodash": "^4.17.15",
+    "mongoose": "^5.8.0"
   },
   "devDependencies": {
+    "@types/lodash": "^4.14.149",
+    "@types/mongoose": "^5.5.32",
     "nodemon": "^2.0.1"
   }
 }
